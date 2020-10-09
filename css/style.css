@@ -1,5 +1,5 @@
 div {
-    border: 1px solid gray;
+    color: white;
 }
 
 
@@ -10,8 +10,9 @@ header {
 }
 
 .complete_game {
-    height: 1000px;
-    background-color: rgb(247, 233, 216);
+    min-height: 300px;
+    max-height: 300px;
+    background-color: black;
 }
 
 
@@ -24,17 +25,25 @@ header {
     display: flex;
     justify-content: space-around;
 }
-.squares {
+
+.bottom_container {
+    display: flex;
+    justify-content: space-around;
 }
 .board {
     display: flex;
     flex-flow: row wrap;
-    height: 180px;
-    width: 180px;
+    justify-content: center;
+    height: 170px;
+    width: 170px;
+    background-color: rgb(47, 97, 99);
 }
 .player1_board_squares, .player2_board_squares {
     display: flex;
     flex-flow: column;
-    height:16px;
-    width: 16px;
+    justify-content: center;
+    height:14px;
+    width: 14px;
+    background-color: cadetblue;
+    border: .25px solid white;
 }
