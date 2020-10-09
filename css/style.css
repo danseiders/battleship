@@ -1,24 +1,25 @@
-div {
+/* Whole Page */
+
+.complete_game{
     color: white;
-}
-
-
-header {
-    height: 40px;
-    text-align: center;
-    font-size: 3vw;
-}
-
-.complete_game {
+    background-image: url("https://imgur.com/tBez5wq");
     min-height: 300px;
     max-height: 300px;
     background-color: black;
 }
 
 
+
+/* divs of main page */
+header {
+    text-align: center;
+    font-size: 4vw;
+}
+
 .titles {
     display: flex;
     justify-content: space-around;
+    font-size: 2vw;
 }
 
 .gameplay_container{
@@ -26,10 +27,6 @@ header {
     justify-content: space-around;
 }
 
-.bottom_container {
-    display: flex;
-    justify-content: space-around;
-}
 .board {
     display: flex;
     flex-flow: row wrap;
@@ -46,4 +43,9 @@ header {
     width: 14px;
     background-color: cadetblue;
     border: .25px solid white;
+}
+
+.bottom_container {
+    display: flex;
+    justify-content: space-around;
 }
