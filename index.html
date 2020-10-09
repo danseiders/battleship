@@ -4,14 +4,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
   <script
   src="https://code.jquery.com/jquery-3.2.1.min.js"
   integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
   crossorigin="anonymous"></script>
-  <script src="app.js"></script>
+  <script src="js/app.js"></script>
 </head>
 <body>
-    adsafdsl
+    <div class="complete_game">
+      <header>BATTLESHIP</header>
+        <div class="titles">
+          <div class="name" id="computer_name">COMPUTER</div>
+          <div class="name" id="user_name">PLAYER</div>
+        </div>
+        <div class="gameplay_container">
+          <div class="user_ships" id="player1_ships">P 1 SHIPS</div>
+          <div class="board" id="player1_board"></div>
+          <div class="statistics">STATISTICS</div>
+          <div class="board" id="player2_board"></div>
+          <div class="player_ships" id="player2_ships">P 2 SHIPS</div>
+        </div>
+        <div class="bottom_container">
+          <div class="destroyed_ships" id="player1_destroyed">DESTROYED</div>
+          <div class="destroyed_ships" id="player2_destroyed">DESTROYED</div>
+        </div>
+
+    </div>
 </body>
 </html>

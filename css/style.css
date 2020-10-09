@@ -1,3 +1,40 @@
-* {
-    background-color: green;
+div {
+    border: 1px solid gray;
+}
+
+
+header {
+    height: 40px;
+    text-align: center;
+    font-size: 3vw;
+}
+
+.complete_game {
+    height: 1000px;
+    background-color: rgb(247, 233, 216);
+}
+
+
+.titles {
+    display: flex;
+    justify-content: space-around;
+}
+
+.gameplay_container{
+    display: flex;
+    justify-content: space-around;
+}
+.squares {
+    height:16px;
+    width: 16px;
+}
+.board {
+    display: flex;
+    flex-flow: row wrap;
+    height: 180px;
+    width: 180px;
+}
+#player_board {
+    display: flex;
+    flex-flow: column;
 }
