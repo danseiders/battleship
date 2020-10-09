@@ -1,14 +1,22 @@
 
- const buildBoards = () =>{
-   for(let i = 1; i <= 100; i++){
-    const $boardSquares = $('<div class="squares">')
-    const $board = $('.board')
-  $board.append($boardSquares)
-  }
+   const rowLetters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'];
+   
+   const buildBoard = (user) =>{
+   for(let i = 0;  i < rowLetters.length; i++){
+      const letter = rowLetters[i];
+      for(let j = 1; j <= 10; j++){
+        const $boardSquares = $(`<div class="${user}_board_squares" id="${letter}${j}">`)
+        const $board = $(`#${user}_board`)
+        $board.append($boardSquares)
+    // console.log(i)
+       } 
+    }
 }
 
 
+
 $(()=> {
-  buildBoards()
+  buildBoard('player1')
+  buildBoard('player2')
     
 })
