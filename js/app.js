@@ -15,11 +15,42 @@
        } 
     }
 }
+/////////////////////////////
+///JQUERY UI DRAG AND DROP///
+/////////////////////////////
 
-
-const addPeg = () => {
+$(function() {  
+  $( ".P1ship" ).draggable({ 
+    containment: "#player1_board",
+    cursor: "crosshair",
+    // revert: true,
+    grid: [ 16, 17 ],
+   });
   
-}
+   $( ".P2ship" ).draggable({ 
+    containment: "#player2_board",
+    cursor: "crosshair",
+    // revert: true,
+    grid: [ 16, 17 ],
+   });
+   
+   $( ".player1_board_squares" ).droppable({
+      accept: "#P1carrier",
+      accept: "#P1battleship",
+      accept: "#P1cruiser",
+      accept: "#P1submarine",
+      accept: "#P1destroyer",
+   });
+  
+   $( ".player2_board_squares" ).droppable({
+    accept: "#P2carrier",
+      accept: "#P2battleship",
+      accept: "#P2cruiser",
+      accept: "#P2submarine",
+      accept: "#P2destroyer",
+   });
+
+});  
 
 ////////////////////
 ///JQUERY ON LOAD///
@@ -33,19 +64,3 @@ $(()=> {
   
   
 })
-
-
-//////////////NOTES///////////////////
-// this is the jquery drag and drop that should hopefully work?
-// $( "#draggable4" ).draggable({ grid: [ 20, 20 ] });
-
-/// stylesheet link?
-// <style>
-  // .draggable { width: 90px; height: 80px; padding: 5px; float: left; margin: 0 10px 10px 0; font-size: .9em; }
-  // .ui-widget-header p, .ui-widget-content p { margin: 0; }
-  // #snaptarget { height: 140px; }
-  // </style>
-
-  //<div id="draggable4" class="draggable ui-widget-content">
-  // <p>I snap to a 20 x 20 grid</p>
-  // </div>

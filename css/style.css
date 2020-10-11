@@ -52,22 +52,42 @@ header {
     justify-content: space-around;
 }
 
+.player1_ships, .player2_ships {
+    display: flex;
+    flex-flow: column;
+    justify-content: space-evenly;
+    align-items: center; 
+}
 .carrier {
-    
+    height: 16px;
+    width: 85px;
+    background-color: grey;
 }
 
 .battleship {
-
+    height: 17px;
+    width: 68px;
+    background-color: grey;
+    
 }
 
 .cruiser {
-
+    height: 17px;
+    width: 51px;
+    background-color: grey;
+    
 }
 
 .submarine{
-
+    height: 17px;
+    width: 51px;
+    background-color: grey;
+    
 }
 
 .destroyer{
+    height: 17px;
+    width: 32px;
+    background-color: grey;
 
 }

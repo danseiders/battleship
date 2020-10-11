@@ -11,12 +11,6 @@
   crossorigin="anonymous"></script>
   <script src="js/jquery-ui.js"></script>
   <script src="js/app.js"></script>
-  <script> $(function() {  
-    $( ".ship" ).draggable({ 
-      containment: ".board",
-      grid: [ 16, 17 ],
-     });  
-  });  
 </script>
 </head>
 <body>
@@ -27,41 +21,65 @@
           <div class="name" id="user_name">PLAYER 2</div>
         </div>
         <div class="gameplay_container">
-          <div class="user_ships" id="player1_ships">P 1 SHIPS
-            <div class="ship carrier" id="P1carrier">
-              <p>Carrier</p>
+          <div class="player1_ships">P 1 SHIPS
+            <div class="P1ship carrier" id="P1carrier">
+              <div class="carrierContents" id="P1car1"></div>
+              <div class="carrierContents" id="P1car2"></div>
+              <div class="carrierContents" id="P1car3"></div>
+              <div class="carrierContents" id="P1car4"></div>
+              <div class="carrierContents" id="P1car5"></div>
             </div>
-            <div class="ship battleship" id="P1Battleship">
-              <p>Battleship</p>
+            <div class="P1ship battleship" id="P1Battleship">
+              <div class="battleshipContents" id="P1bat1"></div>
+              <div class="battleshipContents" id="P1bat2"></div>
+              <div class="battleshipContents" id="P1bat3"></div>
+              <div class="battleshipContents" id="P1bat4"></div>
             </div>
-            <div class="ship cruiser" id="P1Cruiser">
-              <p>Cruiser</p>
+            <div class="P1ship cruiser" id="P1Cruiser">
+              <div class="cruiserContents" id="P1cruz1"></div>
+              <div class="cruiserContents" id="P1cruz2"></div>
+              <div class="cruiserContents" id="P1cruz3"></div>
             </div>
-            <div class="ship submarine" id="P1Submarine">
-              <p>Submarine</p>
+            <div class="P1ship submarine" id="P1Submarine">
+              <div class="submarineContents" id="P1sub1"></div>
+              <div class="submarineContents" id="P1sub2"></div>
+              <div class="submarineContents" id="P1sub3"></div>
             </div>
-            <div class="ship destroyer" id="P1Destroyer">
-              <p>Destroyer</p>
+            <div class="P1ship destroyer" id="P1Destroyer">
+              <div class="destroyerContents" id="P1dest1"></div>
+              <div class="destroyerContents" id="P1dest2"></div>
             </div>
           </div>
           <div class="board" id="player1_board"></div>
           <div class="statistics">STATISTICS</div>
           <div class="board" id="player2_board"></div>
-          <div class="player_ships" id="player2_ships">P 2 SHIPS
-            <div class="ship carrier" id="P2carrier">
-              <p>Carrier</p>
+          <div class="player2_ships">P 2 SHIPS
+            <div class="P2ship carrier" id="P2carrier">
+              <div class="carrierContents" id="P2car1"></div>
+              <div class="carrierContents" id="P2car2"></div>
+              <div class="carrierContents" id="P2car3"></div>
+              <div class="carrierContents" id="P2car4"></div>
+              <div class="carrierContents" id="P2car5"></div>
             </div>
-            <div class="ship battleship" id="P2Battleship">
-              <p>Battleship</p>
+            <div class="P2ship battleship" id="P2Battleship">
+              <div class="battleshipContents" id="P2bat1"></div>
+              <div class="battleshipContents" id="P2bat2"></div>
+              <div class="battleshipContents" id="P2bat3"></div>
+              <div class="battleshipContents" id="P2bat4"></div>
             </div>
-            <div class="ship cruiser" id="P2Cruiser">
-              <p>Cruiser</p>
+            <div class="P2ship cruiser" id="P2Cruiser">
+              <div class="cruiserContents" id="P2cruz1"></div>
+              <div class="cruiserContents" id="P2cruz2"></div>
+              <div class="cruiserContents" id="P2cruz3"></div>
             </div>
-            <div class="ship submarine" id="P2Submarine">
-              <p>Submarine</p>
+            <div class="P2ship submarine" id="P2Submarine">
+              <div class="submarineContents" id="P2sub1"></div>
+              <div class="submarineContents" id="P2sub2"></div>
+              <div class="submarineContents" id="P2sub3"></div>
             </div>
-            <div class="ship destroyer" id="P2Destroyer">
-              <p>Destroyer</p>
+            <div class="P2ship destroyer" id="P2Destroyer">
+              <div class="destroyerContents" id="P2dest1"></div>
+              <div class="destroyerContents" id="P2dest2"></div>
             </div>
           </div>
         </div>
