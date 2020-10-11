@@ -4,7 +4,8 @@
     color: white;
     background-image: url("https://imgur.com/tBez5wq");
     min-height: 300px;
-    max-height: 300px;
+    min-width: 600px;
+    max-height: 1000px;
     background-color: black;
 }
 
@@ -46,6 +47,27 @@ header {
 }
 
 .bottom_container {
+    height: 100px;
     display: flex;
     justify-content: space-around;
+}
+
+.carrier {
+    
+}
+
+.battleship {
+
+}
+
+.cruiser {
+
+}
+
+.submarine{
+
+}
+
+.destroyer{
+
 }

@@ -28,6 +28,7 @@ const addPeg = () => {
 $(()=> {
   buildBoard('player1')
   buildBoard('player2')
+  
 
   
   
