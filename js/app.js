@@ -7,7 +7,7 @@
    for(let i = 1;  i <= 10; i++){
      for(let j = 0; j < rowLetters.length; j++){
       const letter = rowLetters[j];
-        const $boardSquares = $(`<div class="${user}_board_squares" id="${letter}${i}">`).on('click', (e) => {
+        const $boardSquares = $(`<div class="${user}_board_squares" column="${letter}" row="${i}" id="${letter} ${i}">`).on('click', (e) => {
           $(e.target).css('background-color', 'red') //for now this changes the square to the color red, although I need to add a function that will check the contents of the box for a ship, then change the color to white if miss, red if hit. 
         })
         const $board = $(`#${user}_board`)
@@ -15,59 +15,7 @@
        } 
     }
 }
-/////////////////////////////
-///JQUERY UI DRAG AND DROP///
-/////////////////////////////
 
-// $(function() {  
-//   //this makes each ship draggable to specific pixel grid and changes cursor to crosshairs. 
-//   $( ".P1ship" ).draggable({ 
-//     cursor: "crosshair",
-//     revert: "invalid",
-//     grid: [ 16, 17 ],
-//    });
-  
-//    $( ".P2ship" ).draggable({ 
-//     cursor: "crosshair",
-//     revert: "invalid",
-//     grid: [ 16, 17 ],
-//    });
-
-//   //this only lets the user drop the ships on their own boards, while adding the class of where its dropped.
-//   $( "#A1" ).droppable({
-//     accept: ".P1ship",
-//     drop: function( e, ui ) {
-//       $( this ).addClass( "P1placed_ship" ).find( "div" )
-          
-//     }
-//   });
-//   $( "#player2_board" ).droppable({
-//     accept: ".P2ship",
-//     drop: function( e, ui ) {
-//       $( this ).addClass( "P2placed_ship" ).find( "div" )
-          
-//     }
-//   });
-
-
-   
-//   //  $( ".player1_board_squares" ).droppable({
-//   //     accept: "#P1carrier",
-//   //     accept: "#P1battleship",
-//   //     accept: "#P1cruiser",
-//   //     accept: "#P1submarine",
-//   //     accept: "#P1destroyer",
-//   //  });
-  
-//   //  $( ".player2_board_squares" ).droppable({
-//   //   accept: "#P2carrier",
-//   //     accept: "#P2battleship",
-//   //     accept: "#P2cruiser",
-//   //     accept: "#P2submarine",
-//   //     accept: "#P2destroyer",
-//   //  });
-
-// });  
 
 ////////////////////
 ///JQUERY ON LOAD///
@@ -77,9 +25,16 @@ $(()=> {
   buildBoard('player1')
   buildBoard('player2')
   
+
+
+  /////////////////////////////
+  ///JQuery UI Drag and Drop///
+  /////////////////////////////
   $(function() {  
+    const $carrier = $(".carrier")
+    
     //this makes each ship draggable to specific pixel grid and changes cursor to crosshairs. 
-    $( ".P1ship" ).draggable({ 
+    $( ".P1ship").draggable({ 
       cursor: "crosshair",
       revert: "invalid",
       grid: [ 16, 17 ],
@@ -91,44 +46,28 @@ $(()=> {
       grid: [ 16, 17 ],
      });
   
-    //this only lets the user drop the ships on their own boards, while adding the class of where its dropped.
+    //this only lets the user drop their ships on only their board, while adding the class of where its dropped.
+
+    const $column = document.getElementById('column')
+    const $row = document.getElementById('row')
+
     $( ".player1_board_squares" ).droppable({
       accept: ".P1ship",
       drop: function( e, ui ) {
-        $( this ).addClass( "P1placed_ship" ).find( "div" )
-            
+        // $().html(ui.draggable.remove().html());
+        // $(this).droppable('destroy')
+        $(this).addClass( "P1_placed_ship" ).find(".player1_board_squares")
+     
       }
     });
     $( ".player2_board_squares" ).droppable({
       accept: ".P2ship",
       drop: function( e, ui ) {
-        $( this ).addClass( "P2placed_ship" ).find( "div" )
+        $( this ).addClass( "P2_placed_ship" ).find( "div" )
             
       }
     });
-  
-  
-     
-    //  $( ".player1_board_squares" ).droppable({
-    //     accept: "#P1carrier",
-    //     accept: "#P1battleship",
-    //     accept: "#P1cruiser",
-    //     accept: "#P1submarine",
-    //     accept: "#P1destroyer",
-    //  });
-    
-    //  $( ".player2_board_squares" ).droppable({
-    //   accept: "#P2carrier",
-    //     accept: "#P2battleship",
-    //     accept: "#P2cruiser",
-    //     accept: "#P2submarine",
-    //     accept: "#P2destroyer",
-    //  });
-  
-  });  
-
-  
-  
+  });   
 })
 
 ////////////////
@@ -136,7 +75,6 @@ $(()=> {
 ////////////////
 
 //VISUAL AND INTERACTION
-//get ships to line up with gameboard
 //give ships the ability to rotate
 //make overall game look better
 

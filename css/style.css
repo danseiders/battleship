@@ -1,4 +1,3 @@
-/* Whole Page */
 
 .complete_game{
     color: white;
@@ -25,7 +24,7 @@ header {
 
 .gameplay_container{
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
 }
 
 .board {
@@ -33,12 +32,12 @@ header {
     flex-flow: row wrap;
     justify-content: center;
     height: 170px;
-    width: 170px;
+    width: 160px;
     background-color: rgb(47, 97, 99);
 }
 .player1_board_squares, .player2_board_squares {
     display: flex;
-    flex-flow: column;
+    flex-flow: row;
     justify-content: center;
     height:14px;
     width: 14px;
@@ -55,10 +54,11 @@ header {
 .player1_ships, .player2_ships {
     display: flex;
     flex-flow: column;
+    
    
 }
 .carrier {
-    height: 16px;
+    height: 17px;
     width: 80px;
     background-color: grey;
 }
@@ -85,8 +85,21 @@ header {
 }
 
 .destroyer{
-    height: 17px;
-    width: 32px;
+    height: 16px;
+    width: 31px;
     background-color: grey;
 
+}
+
+
+.P1ship, .P2ship {
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+}
+
+.shipContents {
+    height:14px;
+    width: 14px;
+    border: 1px solid white;
 }
