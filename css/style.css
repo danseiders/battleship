@@ -25,12 +25,15 @@ header {
 .gameplay_container{
     display: flex;
     justify-content: center;
+    align-items: flex-start;
+    
 }
 
 .board {
     display: flex;
     flex-flow: row wrap;
     justify-content: center;
+    margin: 30px;
     height: 170px;
     width: 160px;
     background-color: rgb(47, 97, 99);
@@ -54,6 +57,7 @@ header {
 .player1_ships, .player2_ships {
     display: flex;
     flex-flow: column;
+    margin: 12px 2px;
     
    
 }
