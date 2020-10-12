@@ -1,32 +1,52 @@
 
    
    //this builds the two game boards, assigin a letter and number to the class for each square on the board. Letters are rows, numbers are columns. 
-   const rowLetters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'];
+const rowLetters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'];
    
-   const buildBoard = (user) =>{
-   for(let i = 1;  i <= 10; i++){
-     for(let j = 0; j < rowLetters.length; j++){
-      const letter = rowLetters[j];
-        const $boardSquares = $(`<div class="${user}_board_squares" column="${letter}" row="${i}" id="${letter} ${i}">`).on('click', (e) => {
-          $(e.target).css('background-color', 'red') //for now this changes the square to the color red, although I need to add a function that will check the contents of the box for a ship, then change the color to white if miss, red if hit. 
-        })
-        const $board = $(`#${user}_board`)
-        $board.append($boardSquares)
-       } 
-    }
+const buildBoard = (user) =>{
+  for(let i = 1;  i <= 10; i++){
+    for(let j = 0; j < rowLetters.length; j++){
+    const letter = rowLetters[j];
+    const $boardSquares = $(`<div class="${user}_board_squares" column="${letter}" row="${i}" id="${letter} ${i}">`).on('click', (e) => {
+    $(e.target).css('background-color', 'red') //for now this changes the square to the color red, although I need to add a function that will check the contents of the box for a ship, then change the color to white if miss, red if hit. 
+    })
+    const $board = $(`#${user}_board`)
+    $board.append($boardSquares)
+    } 
+  }
 }
 
+const placePlayer1Ships = () => {
+  $('#P1carrier').css('left', (`${((Math.floor(Math.random() * 6) +7) * 16)}px`))
+  $('#P1carrier').css('top', (`${(Math.floor(Math.random() * 10) * 17)}px`))
+}
+
+//this starts the game after user clicks start button. 
+const startGame = () => {
+  console.log('clicked!')
+  $('.P1ship').draggable('disable')
+  $('.P2ship').draggable('disable')
+  placePlayer1Ships();  
+}
 
 ////////////////////
 ///JQUERY ON LOAD///
 ////////////////////
 
 $(()=> {
-  buildBoard('player1')
-  buildBoard('player2')
+  const $startButton = $('.start_button')
+  
+  buildBoard('player1') //builds player1 board
+  buildBoard('player2') //builds player 2 board
+  $($startButton).on('click', startGame) //when start button clicked, ships cant be moved
+
+  
   
 
+  
+  
 
+//////////////////////////////////////////////////////////////////////////////////
   /////////////////////////////
   ///JQuery UI Drag and Drop///
   /////////////////////////////
@@ -54,8 +74,6 @@ $(()=> {
     $( ".player1_board_squares" ).droppable({
       accept: ".P1ship",
       drop: function( e, ui ) {
-        // $().html(ui.draggable.remove().html());
-        // $(this).droppable('destroy')
         $(this).addClass( "P1_placed_ship" ).find(".player1_board_squares")
      
       }
@@ -63,12 +81,13 @@ $(()=> {
     $( ".player2_board_squares" ).droppable({
       accept: ".P2ship",
       drop: function( e, ui ) {
-        $( this ).addClass( "P2_placed_ship" ).find( "div" )
+        $( this ).addClass( "P2_placed_ship" ).find( ".player2_board_squares" )
             
       }
     });
   });   
 })
+//////////////////////////////////////////////////////////////////////////////////
 
 ////////////////
 ///to do list///
@@ -80,9 +99,8 @@ $(()=> {
 
 
 //LOGIC
-//user (player 2) places ships
-//user hits "play" button that locks in ship placement
-// when user hits "play" player 1 ships get randomly placed
+//make modal with directions
+// when user hits "start game" player 1 ships get randomly placed
 // player 1 ships disappear from "player 1 ships"
 //user fires shots by clicking on player 1 board.
 // missed shots are changed to white circle inside of square
