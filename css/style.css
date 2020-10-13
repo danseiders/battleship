@@ -1,7 +1,6 @@
 
 .complete_game{
     color: white;
-    background-image: url("https://imgur.com/tBez5wq");
     min-height: 1000px;
     min-width: 725px;
     max-height: 1000px;
@@ -38,6 +37,7 @@ header {
     width: 160px;
     background-color: rgb(47, 97, 99);
 }
+
 .player1_board_squares, .player2_board_squares {
     display: flex;
     flex-flow: row;
