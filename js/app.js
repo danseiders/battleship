@@ -1,14 +1,13 @@
 ///////////////
 ///GAME DATA///
 ///////////////
-const player1Data = {
-  battleships: {
-      p1Carrierrier: ['p1Carrier1', 'p1Carrier2', 'p1Carrier3', 'p1Carrier4', 'p1Carrier5'],
-      p1Battleship: ['p11', 'p1Carrier2', 'p1Carrier3', 'p1Carrier4'],
-      p1Carrierrier: ['p1Carrier1', 'p1Carrier2', 'p1Carrier3'],
-      p1Cruiser: ['p1Carrier1', 'p1Carrier2', 'p1Carrier3'],
-      p1Submarine: ['p1Carrier1', 'p1Carrier2'],
-      },
+let player1Data = {
+    p1Carrier: 5,
+    p1Battleship: 4,
+    p1Cruiser: 3,
+    p1Submarine: 3,
+    p1Destroyer: 2,
+    
     destroyedShips: [],
     shotsFired: 0,
     shotsMissed: 0,
@@ -16,14 +15,18 @@ const player1Data = {
     gamesWon: 0,
     gamesLost: 0,
 }
-const player2Data = {
-  battleships: ['Carrierrier', 'battleship', 'cruiser', 'submarine', 'destroyer'],
-  destroyedShips: [],
-  shotsFired: 0,
-  shotsMissed: 0,
-  shotsHit: 0,
-  gamesWon: 0,
-  gamesLost: 0,  
+let player2Data = {
+    p2Carrier: 5,
+    p2Battleship: 4,
+    p2Cruiser: 3,
+    p2Submarine: 3,
+    p2Destroyer: 2,
+    destroyedShips: [],
+    shotsFired: 0,
+    shotsMissed: 0,
+    shotsHit: 0,
+    gamesWon: 0,
+    gamesLost: 0,
 }
 
 ////////////////
@@ -31,18 +34,14 @@ const player2Data = {
 ////////////////
 
 //this builds the two game boards, assigin a letter and number to the class for each square on the board. Letters are rows, numbers are columns. 
-const rowLetters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'];
+const columnLetters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'];
    
 const buildBoard = (user) =>{
   for(let i = 1;  i <= 10; i++){
-    for(let j = 0; j < rowLetters.length; j++){
-    const letter = rowLetters[j];
-    const $boardSquares = $(`<div class="${user}_board_squares" column="${letter}" row="${i}" id="${letter} ${i}">`).on('click', userFires)
-      
-    // on('click', (e) => {
-    // $(e.target).css('background-color', 'white')
-    // .css('border-radius', '10px') 
-    // })
+    for(let j = 0; j < columnLetters.length; j++){
+    const letter = columnLetters[j];
+    const $boardSquares = $(`<div class="${user}_board_squares" column="${letter}" row="${i}" id="${letter}${i}">`)
+    .on('click', userFires)
     const $board = $(`#${user}_board`)
     $board.append($boardSquares)
     } 
@@ -92,31 +91,41 @@ const startGame = () => {
   
 }
 
-const p1ShipIds = {
-  p1Carrier: ['p1Carrier1', 'p1Carrier2', 'p1Carrier3', 'p1Carrier4', 'p1Carrier5'],
-  p1Battleship: ['p1Battleship1', 'p1Battleship2', 'p1Battleship3', 'p1Battleship4'],
-  p1Cruiser: ['p1Cruiser1', 'p1Cruiser2', 'p1Cruiser3'],
-  p1Submarine: ['p1Submarine1', 'p1Submarine2', 'p1Submarine3'],
-  p1Destroyer: ['p1Destroyer1', 'p1Destroyer2'],
-}
 
 
 
-//when player 2 clicks on player 1 board, this will check the contents to see if its a hit or miss by comparing the class of the square clicked.
+//////////////////////
+///ATTACK SEQUENCES///
+//////////////////////
+//when player 2 clicks on player 1 board, this will check the contents to see if its a hit or miss by comparing the class of the square clicked, then run the computer fire sequence
 const userFires = (e) => {
   const miss = e.target.classList.contains('player1_board_squares')
   const hit = e.target.classList.contains('player1ShipContents')
+  const location = e.target.id
+  const ship = 'player2Data.' + location
   if(miss === true) {
-      console.log('that was a miss!')
-     $(e.target).css('background-color', 'white')
+    console.log('that was a miss!')
+    $(e.target).css('background-color', 'white')
     .css('border-radius', '10px') 
+    setTimeout(computerFiresBack, 500) 
   } else if(hit === true) {
-    console.log(`You've hit the ${e.target}`)
+   
+    // console.log((player2Data.battleships).location)
+    console.log(`HIT!`)
     $(e.target).css('background-color', 'red')
     .css('border-radius', '10px')
+    setTimeout(computerFiresBack, 500) 
   }
 }
- 
+
+const computerFiresBack = () => {
+  console.log('COMPUTER FIRES BACK!')
+ const column = columnLetters[Math.floor(Math.random() * 10)]
+ const row = Math.floor(Math.random() * 10)
+ const event = document.getElementById(`${column}${row}`)
+
+ console.log(event)
+}
 
 
 /////////////////////////////////////////////////////////////////////////////////////////
