@@ -89,7 +89,7 @@ header {
 }
 
 
-.P1ship, .P2ship {
+.p1ship, .p2ship {
     display: flex;
     flex-flow: row;
     justify-content: center;
