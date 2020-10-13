@@ -2,7 +2,7 @@
 .complete_game{
     color: white;
     background-image: url("https://imgur.com/tBez5wq");
-    min-height: 300px;
+    min-height: 1000px;
     min-width: 725px;
     max-height: 1000px;
     background-color: black;
@@ -59,40 +59,33 @@ header {
     flex-flow: column;
     margin: 12px 2px;
     
+    
    
 }
 .carrier {
     height: 17px;
     width: 80px;
-    background-color: grey;
 }
 
 .battleship {
     height: 17px;
     width: 63px;
-    background-color: grey;
-    
+
 }
 
 .cruiser {
     height: 17px;
     width: 48px;
-    background-color: grey;
-    
 }
 
 .submarine{
     height: 17px;
-    width: 48px;
-    background-color: grey;
-    
+    width: 48px;    
 }
 
 .destroyer{
     height: 16px;
     width: 31px;
-    background-color: grey;
-
 }
 
 
@@ -102,8 +95,15 @@ header {
     justify-content: center;
 }
 
-.shipContents {
+.player1ShipContents {
     height:14px;
     width: 14px;
-    border: 1px solid white;
+    border: 1px solid gray;
+    background-color:  gray;
+}
+.player2ShipContents {
+    height:14px;
+    width: 14px;
+    border: 1px solid gray;
+    background-color: gray;
 }
