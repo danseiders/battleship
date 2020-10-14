@@ -65,6 +65,7 @@ header {
 .carrier {
     height: 17px;
     width: 80px;
+    border-radius: 6px;
 }
 
 .battleship {
@@ -93,6 +94,7 @@ header {
     display: flex;
     flex-flow: row;
     justify-content: center;
+    border-radius: 6px;
 }
 
 .player1ShipContents {
