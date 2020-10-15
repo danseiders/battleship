@@ -108,8 +108,8 @@ const startGame = () => {
   $('.p2ship').draggable('disable') //disables drag functionality on player 2
   placePlayer1Ships();  //runs start sequence
   $shipContents.on('click', userFires)
-  $('.p1ship').css('backgroundColor')
-  $('.player1ShipContents').css('opacity', '0') 
+  $('.p1ship').css('backgroundColor') //changes computer ships to transparent
+  $('.player1ShipContents').css('opacity', '0') //changes computer ships to transparet
 }
 
 //checks game win conditions
