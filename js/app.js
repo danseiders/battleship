@@ -72,7 +72,8 @@ const placePlayer1Ships = () => {
     .css('left', (`${((Math.floor(Math.random() * 6) +9) * 16)}px`))
   $('#p1Destroyer').css('top', (`${destroyerTop[Math.floor(Math.random() * 10)]}px`))
     .css('left', (`${((Math.floor(Math.random() * 6) +10) * 16)}px`))
-  // $('.player1ShipContents').css('opacity',  '0.01') OPACITY!!!
+  $('.player1ShipContents').css('opacity',  '0')
+  $('.p1ship').css('opacity', '0')
 }
 
 //takes the ID of where the ship was dropped on board and adds/subtracts the the correct amout of spaces according to the length of the ship. This is for HORIZONTAL ONLY
@@ -99,7 +100,7 @@ const p2AddShipLocation = (ship, location)=>{
     [ location, `${space  + 1}`], 
     console.log(player2Data.shipLocation.p2Destroyer)
   } else {
-    //NEED TO ADD BOARD RESET/REBUILD HERE!!!
+    alert('Please reset last dropped ship!')
     console.log('not working')
   }
 }
@@ -111,9 +112,9 @@ const p2AddShipLocation = (ship, location)=>{
 const startGame = () => {
   const $shipContents = $('.player1ShipContents')
   $('.start_button').remove() //removes start button
-  $('.player1_board_squares').css('background-color', 'cadetblue')
+  $('.player1_board_squares').css('background-color', '')
     .css('border-radius', '0') //resets player1 board
-  $('.player2_board_squares').css('background-color', 'cadetblue')
+  $('.player2_board_squares').css('background-color', '')
     .css('border-radius', '0') //resets player2 board
   $('.p1ship').draggable('disable') //disables drag functionality on player 1
   $('.p2ship').draggable('disable') //disables drag functionality on player 2
@@ -123,9 +124,9 @@ const startGame = () => {
 
 const checkForWinner = () => {
   if(player1Data.destroyedShips.length === 5){
-    console.log('Player 1 has lost!')
+    alert('Player 1 has lost!')
   } else if (player2Data.destroyedShips.length === 5){ 
-    console.log('Player 2 has lost!')
+    alert('Player 2 has lost!')
   }
 
 }
@@ -186,6 +187,7 @@ const userFires = (e) => {
     console.log(`HIT!`)
     $(e.target).css('background-color', 'red')
     .css('border-radius', '10px')
+    .css('opacity', '1')
     setTimeout(computerFiresBack, 500) 
   }
 }
@@ -262,11 +264,13 @@ $(()=> {
     $( ".p1ship").draggable({ 
       cursor: "crosshair",
       revert: "invalid",
+    
       grid: [ 16, 17 ],
      });
     $( ".p2ship").draggable({ 
       cursor: "crosshair",
       revert: "invalid",
+      
       grid: [ 16, 17 ],
      });
     
@@ -293,16 +297,15 @@ $(()=> {
 ////////////////
 
 //VISUAL AND INTERACTION
+//fix overlapping ships on boards
 //give ships the ability to rotate
 //make overall game look better
 //make modal with directions
 //make modal with YOU WON or YOU LOST!
-
-// data
-//build player objects with ships
-//build game statistics
+//when someone wins, create reset button to start over without reloading. 
 
 //LOGIC
-// hits to player 2 are changed to red circle inside of square
-//register hits on ships, decreasing score value
-//register sunken ships
+
+//BUGS/THINGS TO FIX
+//stop player 1 ships from overlapping on startup
+//stop player 2 ships from being able to be placed outside of board
