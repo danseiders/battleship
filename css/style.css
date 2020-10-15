@@ -50,7 +50,6 @@ h3 {
     height: 170px;
     width: 160px;
     background-color: rgb(47, 97, 99);
-    background-image: url();
 }
 
 #player1_board {
@@ -105,6 +104,9 @@ h3 {
     width: 31px;
 }
 
+.p1ship {
+    z-index: 1;
+}
 
 .p1ship, .p2ship {
     display: flex;

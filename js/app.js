@@ -57,17 +57,17 @@ const cruiserTop = [-34, -17, 0, 17, 34, 51, 68, 85, 102, 119];
 const submarineTop = [-51, -34, -17, 0, 17, 34, 51, 68, 85, 102];
 const destroyerTop = [-68, -51, -34, -17, 0, 17, 34, 51, 68, 85];
 const placePlayer1Ships = () => {
-  $('#p1Carrier').css('top', (`${carrierTop[Math.floor(Math.random() * 10)]}px`))
-    .css('left', (`${((Math.floor(Math.random() * 6) +7) * 16)}px`))
-  $('#p1Battleship').css('top', (`${battleshipTop[Math.floor(Math.random() * 10)]}px`))
-    .css('left', (`${((Math.floor(Math.random() * 6) +8) * 16)}px`))
-  $('#p1Cruiser').css('top', (`${cruiserTop[Math.floor(Math.random() * 10)]}px`))
-    .css('left', (`${((Math.floor(Math.random() * 6) +9) * 16)}px`))
-  $('#p1Submarine').css('top', (`${submarineTop[Math.floor(Math.random() * 10)]}px`))
-    .css('left', (`${((Math.floor(Math.random() * 6) +9) * 16)}px`))
-  $('#p1Destroyer').css('top', (`${destroyerTop[Math.floor(Math.random() * 10)]}px`))
-    .css('left', (`${((Math.floor(Math.random() * 6) +10) * 16)}px`))
-  $('.player1ShipContents').css('opacity',  '0') //makes ships disappear when start button is pushed
+  $('#p1Carrier').css('top', (`${carrierTop[Math.floor(Math.random() * 2)]}px`))
+    .css('left', (`${((Math.floor(Math.random() * 6) +11) * 16)}px`))
+  $('#p1Battleship').css('top', (`${battleshipTop[(Math.floor(Math.random() * 2) + 2)]}px`))
+    .css('left', (`${((Math.floor(Math.random() * 6) +12) * 16)}px`))
+  $('#p1Cruiser').css('top', (`${cruiserTop[(Math.floor(Math.random() * 2) + 4)]}px`))
+    .css('left', (`${((Math.floor(Math.random() * 6) +13) * 16)}px`))
+  $('#p1Submarine').css('top', (`${submarineTop[(Math.floor(Math.random() * 2) + 6)]}px`))
+    .css('left', (`${((Math.floor(Math.random() * 6) +13) * 16)}px`))
+  $('#p1Destroyer').css('top', (`${destroyerTop[(Math.floor(Math.random() * 2) + 8)]}px`))
+    .css('left', (`${((Math.floor(Math.random() * 6) +14) * 16)}px`))
+  // $('.player1ShipContents').css('opacity',  '0') //makes ships disappear when start button is pushed
   // $('.p1ship').css('opacity', '0') //makes ships disappear when start button is pushed
 }
 
@@ -76,27 +76,22 @@ const p2AddShipLocation = (ship, location)=>{
   const space = Number(location)
   if(ship === "p2Carrier") {
     player2Data.shipLocation.p2Carrier = 
-    [`${space - 2}`, `${space - 1}`, location, `${space  + 1}` , `${space  + 2}`], 
-    console.log(player2Data.shipLocation.p2Carrier)
+    [`${space - 2}`, `${space - 1}`, location, `${space  + 1}` , `${space  + 2}`]
   } else if (ship === "p2Battleship"){
     player2Data.shipLocation.p2Battleship = 
-    [`${space - 1}`, location, `${space  + 1}` , `${space  + 2}`], 
-      console.log(player2Data.shipLocation.p2Battleship)
+    [`${space - 1}`, location, `${space  + 1}` , `${space  + 2}`] 
   } else if (ship === 'p2Cruiser'){
     player2Data.shipLocation.p2Cruiser = 
-    [`${space - 1}`, location, `${space  + 1}`], 
-    console.log(player2Data.shipLocation.p2Cruiser)
+    [`${space - 1}`, location, `${space  + 1}`]
   } else if (ship === 'p2Submarine'){
     player2Data.shipLocation.p2Submarine = 
-    [`${space - 1}`, location, `${space  + 1}`], 
-    console.log(player2Data.shipLocation.p2Submarine)
+    [`${space - 1}`, location, `${space  + 1}`] 
   } else if (ship === 'p2Destroyer'){
     player2Data.shipLocation.p2Destroyer = 
-    [ location, `${space  + 1}`], 
-    console.log(player2Data.shipLocation.p2Destroyer)
+    [ location, `${space  + 1}`]
   } else {
-    alert('Please reset last dropped ship!')
-    console.log('not working')
+    alert('Ship didn\'t register....Please reset last dropped ship!')
+    console.log('placement not working')
   }
 }
 //////////////////////
@@ -129,20 +124,16 @@ const checkForWinner = () => {
 
 //checks player 1 score and pushes destroyed ships to player1 object
 const checkPlayer1Score = (shipStrength, target) => {
-  console.log(shipStrength)
   if(shipStrength === 0){
     player1Data.destroyedShips.push(target)
     checkForWinner()
-    console.log(player1Data.destroyedShips)
   }
 }
 //checks player 2 score and pushes destroyed ships to player2 object
 const checkPlayer2Score = (shipStrength, target) => {
-  console.log(shipStrength)
   if(shipStrength === 0){
     player2Data.destroyedShips.push(target)
     checkForWinner()
-    console.log(player2Data.destroyedShips)
   }
 }
 
@@ -156,12 +147,11 @@ const userFires = (e) => {
   const miss = e.target.classList.contains('player1_board_squares')
   const hit = e.target.classList.contains('player1ShipContents')
   const location = e.target.id
-  const ship = 'player2Data.' + location
+  const ship = e.target.id.slice(0 , -6)
   if(divsAlreadyClicked.includes(location)){
     alert(`You've already chosen this space. Work on your aim guy!`)
-}else if(miss === true) {
+  }else if(miss === true) {
     divsAlreadyClicked.push(location)
-    console.log(divsAlreadyClicked)
     console.log('that was a miss!')
     $(e.target).css('background-color', 'white')
     .css('opacity', '.7')
@@ -169,20 +159,21 @@ const userFires = (e) => {
     setTimeout(computerFiresBack, 500) 
   } else if (hit === true) {
     divsAlreadyClicked.push(location)
-    console.log(divsAlreadyClicked)
-    if(e.target.id === 'p1Carrier'){
+    console.log(e.target.id)
+    console.log(ship)
+    if(ship === 'p1Carrier'){
       player1Data.p1Carrier -=1
       checkPlayer1Score(player1Data.p1Carrier, e.target.id)
-    } else if (e.target.id === 'p1Battleship'){
+    } else if (ship === 'p1Battleship'){
       player1Data.p1Battleship -=1
       checkPlayer1Score(player1Data.p1Battleship, e.target.id)
-    } else if (e.target.id === 'p1Cruiser'){
+    } else if (ship === 'p1Cruiser'){
       player1Data.p1Cruiser -=1
       checkPlayer1Score(player1Data.p1Cruiser, e.target.id)
-    } else if (e.target.id === 'p1Submarine'){
+    } else if (ship === 'p1Submarine'){
       player1Data.p1Submarine -=1
       checkPlayer1Score(player1Data.p1Submarine, e.target.id)
-    } else if (e.target.id === 'p1Destroyer'){
+    } else if (ship === 'p1Destroyer'){
       player1Data.p1Destroyer -=1
       checkPlayer1Score(player1Data.p1Destroyer, e.target.id)
     }
@@ -205,35 +196,35 @@ const computerFiresBack = () => {
     computerFiresBack() //repeat function
   } else if (player2Data.shipLocation.p2Carrier.includes(`${id}`)){ //if the number selected by mathrandom is in the player Object ship location
     const shipDivHit = player2Data.shipLocation.p2Carrier.indexOf(`${id}`)+ 1; //uses the random number to check where in the ship location array it is and subtracts 1. 
-    $(`#p2Carrier${shipDivHit}`).css('background-color', 'red').css('border-radius', '10px') //using the index number, this selects the correct div in the ship container.
+    $(`#p2Carrier${shipDivHit}`).css('background-color', 'red').css('border-radius', '10px').css('opacity', '1') //using the index number, this selects the correct div in the ship container.
     player2Data.p2Carrier -= 1 //subtracts points from ship
     console.log('COMPUTER HIT!')
     numbersChosen.push(id)
     checkPlayer2Score(player2Data.p2Carrier, 'p2Carrier')
   } else if (player2Data.shipLocation.p2Battleship.includes(`${id}`) === true){ //if the number selected by mathrandom is in the player Object ship location
     const shipDivHit = player2Data.shipLocation.p2Battleship.indexOf(`${id}`)+ 1; //uses the random number to check where in the ship location array it is and subtracts 1. 
-    $(`#p2Battleship${shipDivHit}`).css('background-color', 'red').css('border-radius', '10px') //using the index number, this selects the correct div in the ship container.
+    $(`#p2Battleship${shipDivHit}`).css('background-color', 'red').css('border-radius', '10px').css('opacity', '1') //using the index number, this selects the correct div in the ship container.
     player2Data.p2Battleship -= 1 //subtracts points from ship
     console.log('COMPUTER HIT!')
     numbersChosen.push(id)
     checkPlayer2Score(player2Data.p2Battleship, 'p2Battleship')
   } else if (player2Data.shipLocation.p2Cruiser.includes(`${id}`) === true) { //if the number selected by mathrandom is in the player Object ship location
     const shipDivHit = player2Data.shipLocation.p2Cruiser.indexOf(`${id}`)+ 1; //uses the random number to check where in the ship location array it is and subtracts 1. 
-    $(`#p2Cruiser${shipDivHit}`).css('background-color', 'red').css('border-radius', '10px') //using the index number, this selects the correct div in the ship container.
+    $(`#p2Cruiser${shipDivHit}`).css('background-color', 'red').css('border-radius', '10px').css('opacity', '1') //using the index number, this selects the correct div in the ship container.
     player2Data.p2Cruiser -= 1 //subtracts points from ship
     console.log('COMPUTER HIT!')
     numbersChosen.push(id)
     checkPlayer2Score(player2Data.p2Cruiser, 'p2Cruiser')
   } else if (player2Data.shipLocation.p2Submarine.includes(`${id}`) === true) { //if the number selected by mathrandom is in the player Object ship location
     const shipDivHit = player2Data.shipLocation.p2Submarine.indexOf(`${id}`)+ 1; //uses the random number to check where in the ship location array it is and subtracts 1. 
-    $(`#p2Submarine${shipDivHit}`).css('background-color', 'red').css('border-radius', '10px') //using the index number, this selects the correct div in the ship container.
+    $(`#p2Submarine${shipDivHit}`).css('background-color', 'red').css('border-radius', '10px').css('opacity', '1') //using the index number, this selects the correct div in the ship container.
     player2Data.p2Submarine -= 1 //subtracts points from ship
     console.log('COMPUTER HIT!')
     numbersChosen.push(id)
     checkPlayer2Score(player2Data.p2Submarine, 'p2Submarine')
   } else if (player2Data.shipLocation.p2Destroyer.includes(`${id}`) === true) { //if the number selected by mathrandom is in the player Object ship location
     const shipDivHit = player2Data.shipLocation.p2Destroyer.indexOf(`${id}`)+ 1; //uses the random number to check where in the ship location array it is and subtracts 1. 
-    $(`#p2Destroyer${shipDivHit}`).css('background-color', 'red').css('border-radius', '10px') //using the index number, this selects the correct div in the ship container.
+    $(`#p2Destroyer${shipDivHit}`).css('background-color', 'red').css('border-radius', '10px').css('opacity', '1') //using the index number, this selects the correct div in the ship container.
     player2Data.p2Destroyer-= 1 //subtracts points from ship
     console.log('COMPUTER HIT!')
     numbersChosen.push(id)
@@ -242,7 +233,6 @@ const computerFiresBack = () => {
     $square.css('background-color', 'white')
     $square.css('border-radius', '10px')
     numbersChosen.push(id)
-    console.log(numbersChosen)
   }
 }
   
@@ -265,20 +255,18 @@ $(()=> {
     $( ".p1ship").draggable({ 
       cursor: "crosshair",
       revert: "invalid",
-    
       grid: [ 16, 17 ],
     });
     $( ".p2ship").draggable({ 
       cursor: "crosshair",
       revert: "invalid",
-      
       grid: [ 16, 17 ],
     });
     
     //lets the user drop their ships on only their board, while adding the class of ship where its dropped to the square.
     $( ".player2_board_squares" ).droppable({
       accept: ".p2ship",
-      drop: function(e) {
+      drop: function(e, ui) {
        const location = e.target.id //gets the div the ship is dropped on
        const ship = document.getElementById(`${e.originalEvent.target.id}`).parentElement.id //finds the id of the ship dropped
         $(this).addClass(`${e.originalEvent.target.id}`).find( ".player2_board_squares" )        
