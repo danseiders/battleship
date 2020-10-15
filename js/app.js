@@ -40,9 +40,7 @@ let player2Data = {
 ///GAME SETUP///
 ////////////////
 
-//this builds the two game boards, assigin a letter and number to the class for each square on the board. Letters are rows, numbers are columns. 
-const columnLetters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'];
-   
+//builds the two game boards and labels the divs 1 through 100 top to left, bottom right
 const buildBoard = (user) =>{
   for(let i = 1;  i <= 100; i++){
     const $boardSquares = $(`<div class="${user}_board_squares" id="${i}">`)
@@ -51,9 +49,6 @@ const buildBoard = (user) =>{
     $board.append($boardSquares)
     } 
 }
-
-
-
 
 //randomly places the computers ships and makes them disappear with opacity. the arrays below are pixel values for height on gamebaoard. 
 const carrierTop = [0, 17, 34, 51, 68, 85, 102, 119, 136, 153];
@@ -72,8 +67,8 @@ const placePlayer1Ships = () => {
     .css('left', (`${((Math.floor(Math.random() * 6) +9) * 16)}px`))
   $('#p1Destroyer').css('top', (`${destroyerTop[Math.floor(Math.random() * 10)]}px`))
     .css('left', (`${((Math.floor(Math.random() * 6) +10) * 16)}px`))
-  $('.player1ShipContents').css('opacity',  '0')
-  // $('.p1ship').css('opacity', '0')
+  $('.player1ShipContents').css('opacity',  '0') //makes ships disappear when start button is pushed
+  // $('.p1ship').css('opacity', '0') //makes ships disappear when start button is pushed
 }
 
 //takes the ID of where the ship was dropped on board and adds/subtracts the the correct amout of spaces according to the length of the ship. This is for HORIZONTAL ONLY

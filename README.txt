@@ -1,8 +1,9 @@
-Background Photo: Kyle Johnson 
+Gameboard background photos: https://unsplash.com/@dynamicwang
 
-instagram.com/kylejeffreys
+_____ jQuery UI Touch Punch 0.2.3 _____
+* Copyright 2011–2014, Dave Furfero
+* Dual licensed under the MIT or GPL Version 2 licenses.
 
-https://unsplash.com/@kylejeffreys?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText
-
-
-https://unsplash.com/@dynamicwang
+github.furf/jquery-ui-touch-punch
+http://touchpunch.furf.com/
+_______________________________________
