@@ -73,7 +73,7 @@ const placePlayer1Ships = () => {
   $('#p1Destroyer').css('top', (`${destroyerTop[Math.floor(Math.random() * 10)]}px`))
     .css('left', (`${((Math.floor(Math.random() * 6) +10) * 16)}px`))
   $('.player1ShipContents').css('opacity',  '0')
-  $('.p1ship').css('opacity', '0')
+  // $('.p1ship').css('opacity', '0')
 }
 
 //takes the ID of where the ship was dropped on board and adds/subtracts the the correct amout of spaces according to the length of the ship. This is for HORIZONTAL ONLY
@@ -147,10 +147,7 @@ const checkPlayer2Score = (shipStrength, target) => {
     checkForWinner()
     console.log(player2Data.destroyedShips)
   }
-
 }
-
-
 
 //////////////////////
 ///ATTACK SEQUENCES///
@@ -165,6 +162,7 @@ const userFires = (e) => {
   if(miss === true) {
     console.log('that was a miss!')
     $(e.target).css('background-color', 'white')
+    .css('opacity', '.7')
     .css('border-radius', '10px') 
     setTimeout(computerFiresBack, 500) 
   } else if (hit === true) {
@@ -197,7 +195,7 @@ const numbersChosen = []
 const computerFiresBack = () => {
   console.log('COMPUTER FIRES BACK!')
   const id = Math.floor(Math.random() * 100) + 1 //picks a random number from 1-100 to compare to squares
-  const $square = $(document.body.children[0].children[2].children[3].children[`${id}` - 1]) //accesses the player2 gameboard to change color for missed shots
+  const $square = $(document.body.children[0].children[3].children[2].children[`${id}` - 1]) //accesses the player2 gameboard to change color for missed shots
   if(numbersChosen.includes(id) === true ) { //if the number selected by mathrandom has already been chosen. 
     computerFiresBack() //repeat function
   } else if (player2Data.shipLocation.p2Carrier.includes(`${id}`)){ //if the number selected by mathrandom is in the player Object ship location
@@ -236,13 +234,12 @@ const computerFiresBack = () => {
     numbersChosen.push(id)
     checkPlayer2Score(player2Data.p2Destroyer, 'p2Destroyer')
   } else { //if the computer shot is a miss, change the div white
-  $square.css('background-color', 'white')
-  $square.css('border-radius', '10px')
-  numbersChosen.push(id)
-  console.log(numbersChosen)
+    $square.css('background-color', 'white')
+    $square.css('border-radius', '10px')
+    numbersChosen.push(id)
+    console.log(numbersChosen)
   }
 }
-
   
 /////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////
@@ -254,8 +251,7 @@ $(()=> {
   buildBoard('player2') //builds player 2 board
   $($startButton).on('click', startGame)//when start button clicked, ships cant be moved
 
-
-//////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////
   /////////////////////////////
   ///JQuery UI Drag and Drop///
   /////////////////////////////
@@ -266,45 +262,49 @@ $(()=> {
       revert: "invalid",
     
       grid: [ 16, 17 ],
-     });
+    });
     $( ".p2ship").draggable({ 
       cursor: "crosshair",
       revert: "invalid",
       
       grid: [ 16, 17 ],
-     });
+    });
     
-   
-  
     //lets the user drop their ships on only their board, while adding the class of ship where its dropped to the square.
     $( ".player2_board_squares" ).droppable({
       accept: ".p2ship",
       drop: function(e) {
        const location = e.target.id //gets the div the ship is dropped on
        const ship = document.getElementById(`${e.originalEvent.target.id}`).parentElement.id //finds the id of the ship dropped
-       $(this).addClass(`${e.originalEvent.target.id}`).find( ".player2_board_squares" )        
-       p2AddShipLocation(ship, location)
-           
+        $(this).addClass(`${e.originalEvent.target.id}`).find( ".player2_board_squares" )        
+        p2AddShipLocation(ship, location)    
       },
     });
   });   
 })
-//////////////////////////////////////////////////////////////////////////////////
-
+//////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////// ONLY NOTES BELOW THIS LINE PLEASE!//////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////
 
 ////////////////
 ///to do list///
 ////////////////
 
 //VISUAL AND INTERACTION
+//media query for smaller screens!
+//fix drag and drop for mobile
 //fix overlapping ships on boards
 //give ships the ability to rotate
 //make overall game look better
 //make modal with directions
 //make modal with YOU WON or YOU LOST!
-//when someone wins, create reset button to start over without reloading. 
+//when someone wins, create reset button to start over without reloading.
+//fix bottom container spacing
+//make ships reappear in ships lost section
 
 //LOGIC
+
+//Temp fix player 1 ship placement to 5 different positions.
 
 //BUGS/THINGS TO FIX
 //stop player 1 ships from overlapping on startup

@@ -1,8 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Notable&display=swap');
 
-/* *{
-    border: 1px solid orange;
-} */
+/* ____________ MAIN PAGE DIVS ____________ */
 .complete_game{
     color: white;
     font-family: 'Notable', sans-serif;
@@ -10,18 +8,12 @@
     min-width: 725px;
     max-height: 1000px;
     background-color: rgb(19, 35, 70);
-    
-    
 }
 
-
-
-/* divs of main page */
 header {
     text-align: center;
     font-size: 5vw;
     padding: 15px;
-   
 }
 
 .titles {
@@ -40,16 +32,16 @@ h3 {
     display: flex;
     flex-flow: row;
     justify-content: center;
-    align-items: baseline;
-    
-    
+    align-items: baseline;  
 }
 
 .bottom_container {
     height: 100px;
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
 }
+
+/*________________ GAMEBOARD STYLE_______________ */
 .board {
     display: flex;
     flex-flow: row wrap;
@@ -59,6 +51,14 @@ h3 {
     width: 160px;
     background-color: rgb(47, 97, 99);
     background-image: url();
+}
+
+#player1_board {
+    background-image: url(https://i.imgur.com/dO5S7gMb.jpg);
+}
+
+#player2_board {
+    background-image: url(https://i.imgur.com/Yl3ah0Kb.jpg);
 }
 
 .player1_board_squares, .player2_board_squares {
@@ -72,23 +72,12 @@ h3 {
     opacity: 0.5;
 }
 
-#player1_board {
-    background-image: url(https://i.imgur.com/dO5S7gMb.jpg);
-}
 
-#player2_board {
-    background-image: url(https://i.imgur.com/Yl3ah0Kb.jpg);
-}
-
-.player1_ships, .player2_ships {
+/*__________________ SHIP STYLE ________________*/
+.player1_ships, .player2_ships { 
     display: flex;
     flex-flow: column;
-    margin: 8px 2px;
-    
-    
-    
-    
-   
+    margin: 8px 2px; 
 }
 .carrier {
     height: 17px;
@@ -99,7 +88,6 @@ h3 {
 .battleship {
     height: 17px;
     width: 63px;
-
 }
 
 .cruiser {
