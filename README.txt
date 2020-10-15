@@ -1,3 +1,9 @@
+BATTLESHIP!
+Adapted from Milton Bradley's classic board game BATTLESHIP. 
+Programming and design by: Dan Seiders 
+
+
+
 Gameboard background photos: https://unsplash.com/@dynamicwang
 
 _____ jQuery UI Touch Punch 0.2.3 _____

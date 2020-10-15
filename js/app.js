@@ -117,6 +117,7 @@ const startGame = () => {
   $shipContents.on('click', userFires)
 }
 
+//checks game win conditions
 const checkForWinner = () => {
   if(player1Data.destroyedShips.length === 5){
     alert('Player 1 has lost!')
@@ -126,6 +127,7 @@ const checkForWinner = () => {
 
 }
 
+//checks player 1 score and pushes destroyed ships to player1 object
 const checkPlayer1Score = (shipStrength, target) => {
   console.log(shipStrength)
   if(shipStrength === 0){
@@ -134,7 +136,7 @@ const checkPlayer1Score = (shipStrength, target) => {
     console.log(player1Data.destroyedShips)
   }
 }
-
+//checks player 2 score and pushes destroyed ships to player2 object
 const checkPlayer2Score = (shipStrength, target) => {
   console.log(shipStrength)
   if(shipStrength === 0){
@@ -148,19 +150,26 @@ const checkPlayer2Score = (shipStrength, target) => {
 ///ATTACK SEQUENCES///
 //////////////////////
 
+const divsAlreadyClicked = []
 //when player 2 clicks on player 1 board, this will check the contents to see if its a hit or miss by comparing the class of the square clicked, then run the computer fire sequence
 const userFires = (e) => {
   const miss = e.target.classList.contains('player1_board_squares')
   const hit = e.target.classList.contains('player1ShipContents')
   const location = e.target.id
   const ship = 'player2Data.' + location
-  if(miss === true) {
+  if(divsAlreadyClicked.includes(location)){
+    alert(`You've already chosen this space. Work on your aim guy!`)
+}else if(miss === true) {
+    divsAlreadyClicked.push(location)
+    console.log(divsAlreadyClicked)
     console.log('that was a miss!')
     $(e.target).css('background-color', 'white')
     .css('opacity', '.7')
     .css('border-radius', '10px') 
     setTimeout(computerFiresBack, 500) 
   } else if (hit === true) {
+    divsAlreadyClicked.push(location)
+    console.log(divsAlreadyClicked)
     if(e.target.id === 'p1Carrier'){
       player1Data.p1Carrier -=1
       checkPlayer1Score(player1Data.p1Carrier, e.target.id)
@@ -183,6 +192,7 @@ const userFires = (e) => {
     .css('opacity', '1')
     setTimeout(computerFiresBack, 500) 
   }
+  
 }
 
 //fires back after user shoots. a random div is picked by column(letter) vs row(number). The div shot at changes colors to white.
