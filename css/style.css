@@ -28,6 +28,13 @@ h2 {
 h3 {
     margin: 0px 125px;
 }
+.red {
+    color: rgb(206, 202, 202)
+}
+
+.blue {
+    color: rgb(180, 204, 216);
+}
 .gameplay_container{
     display: flex;
     flex-flow: row;
@@ -101,19 +108,27 @@ h3 {
 
 .destroyer{
     height: 15px;
-    width: 31px;
+    width: 32px;
 }
 
 .p1ship {
-    z-index: 1;
-}
-
-.p1ship, .p2ship {
     display: flex;
     flex-flow: row;
     justify-content: center;
-    background-color: rgb(41, 45, 59);
     border-radius: 6px;
+    opacity: 0.9;
+    z-index: 1;
+}
+
+
+
+.p2ship {
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+    background-color: rgb(56, 62, 65);
+    border-radius: 6px;
+    opacity: 0.9
 }
 
 .player1ShipContents {
@@ -122,7 +137,7 @@ h3 {
     border: 1px solid gray;
     background-color:  rgb(202, 196, 196);
     border-radius: 10px;
-    opacity: 0.2;
+    opacity: 0.3;
 }
 .player2ShipContents {
     height:14px;
@@ -130,5 +145,5 @@ h3 {
     border: 1px solid gray;
     background-color: rgb(202, 196, 196);
     border-radius: 10px;
-    opacity: 0.2;
+    opacity: 0.3;
 }

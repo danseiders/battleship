@@ -50,7 +50,7 @@ const buildBoard = (user) =>{
     } 
 }
 
-//randomly places the computers ships and makes them disappear with opacity. the arrays below are pixel values for height on gamebaoard. 
+//randomly places the computers ships and makes them disappear with opacity. the arrays below are pixel values for height on gamebaoard. right now the game is set up so each ship can only be put on two different rows. 
 const carrierTop = [0, 17, 34, 51, 68, 85, 102, 119, 136, 153];
 const battleshipTop = [-17, 0, 17, 34, 51, 68, 85, 102, 119, 136];
 const cruiserTop = [-34, -17, 0, 17, 34, 51, 68, 85, 102, 119];
@@ -67,8 +67,6 @@ const placePlayer1Ships = () => {
     .css('left', (`${((Math.floor(Math.random() * 6) +13) * 16)}px`))
   $('#p1Destroyer').css('top', (`${destroyerTop[(Math.floor(Math.random() * 2) + 8)]}px`))
     .css('left', (`${((Math.floor(Math.random() * 6) +14) * 16)}px`))
-  // $('.player1ShipContents').css('opacity',  '0') //makes ships disappear when start button is pushed
-  // $('.p1ship').css('opacity', '0') //makes ships disappear when start button is pushed
 }
 
 //takes the ID of where the ship was dropped on board and adds/subtracts the the correct amout of spaces according to the length of the ship. This is for HORIZONTAL ONLY
@@ -110,6 +108,8 @@ const startGame = () => {
   $('.p2ship').draggable('disable') //disables drag functionality on player 2
   placePlayer1Ships();  //runs start sequence
   $shipContents.on('click', userFires)
+  $('.p1ship').css('backgroundColor')
+  $('.player1ShipContents').css('opacity', '0') 
 }
 
 //checks game win conditions
@@ -148,6 +148,7 @@ const userFires = (e) => {
   const hit = e.target.classList.contains('player1ShipContents')
   const location = e.target.id
   const ship = e.target.id.slice(0 , -6)
+  const shipDiv = e.target.id.slice(-5)
   if(divsAlreadyClicked.includes(location)){
     alert(`You've already chosen this space. Work on your aim guy!`)
   }else if(miss === true) {
@@ -178,9 +179,8 @@ const userFires = (e) => {
       checkPlayer1Score(player1Data.p1Destroyer, e.target.id)
     }
     console.log(`HIT!`)
-    $(e.target).css('background-color', 'red')
-    .css('border-radius', '10px')
-    .css('opacity', '1')
+    console.log(shipDiv)
+    $(e.target).css('background-color', 'red').css('border-radius', '10px').css('opacity', '.8')
     setTimeout(computerFiresBack, 500) 
   }
   
