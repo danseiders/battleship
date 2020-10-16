@@ -96,10 +96,14 @@ const p2AddShipLocation = (ship, location)=>{
 ///GENERAL GAMEPLAY///
 //////////////////////
 
+const startMessage = () => {
+  alert('Please place your ships on the board and hit START GAME!')
+}
+
 //starts the game after user clicks start button. 
 const startGame = () => {
   const $shipContents = $('.player1ShipContents')
-  $('.start_button').remove() //removes start button
+  $('.start_button').css('visibility', 'hidden') //removes start button
   $('.player1_board_squares').css('background-color', '')
     .css('border-radius', '0') //resets player1 board
   $('.player2_board_squares').css('background-color', '')
@@ -110,22 +114,27 @@ const startGame = () => {
   $shipContents.on('click', userFires)
   $('.p1ship').css('backgroundColor') //changes computer ships to transparent
   $('.player1ShipContents').css('opacity', '0') //changes computer ships to transparet
-  $('#gamesWon').html(`GAMES WON<br>${player2Data.gamesWon}`)
-  $('#gamesLost').html(`GAMES LOST<br>${player2Data.gamesLost}`)
+  $('#gamesWon').html(`WINS<br>${player2Data.gamesWon}`) //appends scores to scoreboard
+  $('#gamesLost').html(`LOSSES<br>${player2Data.gamesLost}`)
   $('#shotsFired').html(`SHOTS FIRED<br>${player2Data.shotsFired}`)
   $('#shotsHit').html(`HITS<br>${player2Data.shotsHit}`)
   $('#shotsMissed').html(`MISSES<br>${player2Data.shotsMissed}`)
 }
 
-//checks game win conditions
+////////////////////
+///WIN CONDITIONS///
+////////////////////
 const checkForWinner = () => {
   if(player1Data.destroyedShips.length === 5){
     player2Data.gamesWon += 1
     alert('YOU WIN!')
+    $('#gamesWon').html(`WINS<br>${player2Data.gamesWon}`)
+    $('.start_button').css('visibility', 'visible')
   } else if (player2Data.destroyedShips.length === 5){ 
-    player2Data.gamesLost -= 1
-    $('#gamesWon').html(`GAMES WON<br>${player2Data.gamesWon} `)
+    player2Data.gamesLost += 1
+    $('#gamesLost').html(`LOSSES<br>${player2Data.gamesLost} `)
     alert('Sorry...You lost')
+    $('.start_button').css('visibility', 'visible')
   }
 
 }
@@ -157,10 +166,13 @@ const userFires = (e) => {
   const location = e.target.id
   const ship = e.target.id.slice(0 , -6)
   const shipDiv = e.target.id.slice(-5)
+  player2Data.shotsFired += 1
+    $('#shotsFired').html(`SHOTS FIRED<br>${player2Data.shotsFired}`)
   if(divsAlreadyClicked.includes(location)){
     alert(`You've already chosen this space. Work on your aim guy!`)
   }else if(miss === true) {
     player2Data.shotsMissed += 1
+    $('#shotsMissed').html(`MISSES<br>${player2Data.shotsMissed}`)
     divsAlreadyClicked.push(location)
     console.log('that was a miss!')
     $(e.target).css('background-color', 'white')
@@ -169,6 +181,7 @@ const userFires = (e) => {
     setTimeout(computerFiresBack, 500) 
   } else if (hit === true) {
     player2Data.shotsHit += 1
+    $('#shotsHit').html(`HITS<br>${player2Data.shotsHit}`)
     divsAlreadyClicked.push(location)
     console.log(e.target.id)
     console.log(ship)

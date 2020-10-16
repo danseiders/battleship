@@ -15,7 +15,7 @@
   <script src="js/jquery-ui.touch-punch.min.js"></script>
 </script>
 </head>
-<body>
+<body onload='startMessage()'>
   <div class="complete_game">
     <header>BATTLESHIP</header>
     <div class="titles">
@@ -60,8 +60,8 @@
           </div>
           <div class="board" id="player1_board"></div>
           <div class="statsDiv">
-            <h6 class="stats" id="gamesWon">Games Won</h6>
-            <h6 class="stats" id="gamesLost">Games Lost</h6>
+            <h6 class="stats" id="gamesWon">WINS</h6>
+            <h6 class="stats" id="gamesLost">LOSSES</h6>
             <h6 class="stats" id="shotsFired">Shots Fired</h6>
             <h6 class="stats" id="shotsHit">Hits</h6>
             <h6 class="stats" id="shotsMissed">Misses</h6>
