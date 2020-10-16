@@ -105,6 +105,16 @@ h3 {
     opacity: 0.6;
 }
 
+.start_button {
+    margin-top: 30px;
+    padding: 10px;
+    background-color: rgb(20, 116, 57);
+    border-radius: 10px;
+    color: rgb(220, 238, 220);
+    font-family: 'Notable', sans-serif;
+    font-size: 10px;
+}
+
 /*__________________ SHIP STYLE ________________*/
 .player1_ships, .player2_ships { 
     display: flex;
