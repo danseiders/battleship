@@ -110,6 +110,11 @@ const startGame = () => {
   $shipContents.on('click', userFires)
   $('.p1ship').css('backgroundColor') //changes computer ships to transparent
   $('.player1ShipContents').css('opacity', '0') //changes computer ships to transparet
+  $('#gamesWon').html(`GAMES WON<br>${player2Data.gamesWon}`)
+  $('#gamesLost').html(`GAMES LOST<br>${player2Data.gamesLost}`)
+  $('#shotsFired').html(`SHOTS FIRED<br>${player2Data.shotsFired}`)
+  $('#shotsHit').html(`HITS<br>${player2Data.shotsHit}`)
+  $('#shotsMissed').html(`MISSES<br>${player2Data.shotsMissed}`)
 }
 
 //checks game win conditions
@@ -119,6 +124,7 @@ const checkForWinner = () => {
     alert('YOU WIN!')
   } else if (player2Data.destroyedShips.length === 5){ 
     player2Data.gamesLost -= 1
+    $('#gamesWon').html(`GAMES WON<br>${player2Data.gamesWon} `)
     alert('Sorry...You lost')
   }
 
