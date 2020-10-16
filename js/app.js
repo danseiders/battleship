@@ -29,11 +29,11 @@ let player2Data = {
 
     },
     destroyedShips: [],
-    shotsFired: 0,
-    shotsMissed: 0,
-    shotsHit: 0,
     gamesWon: 0,
     gamesLost: 0,
+    shotsFired: 0,
+    shotsHit: 0,
+    shotsMissed: 0,
 }
 
 ////////////////
@@ -58,15 +58,15 @@ const submarineTop = [-51, -34, -17, 0, 17, 34, 51, 68, 85, 102];
 const destroyerTop = [-68, -51, -34, -17, 0, 17, 34, 51, 68, 85];
 const placePlayer1Ships = () => {
   $('#p1Carrier').css('top', (`${carrierTop[Math.floor(Math.random() * 2)]}px`))
-    .css('left', (`${((Math.floor(Math.random() * 6) +11) * 16)}px`))
+    .css('left', (`${((Math.floor(Math.random() * 6) + 8) * 16)}px`))
   $('#p1Battleship').css('top', (`${battleshipTop[(Math.floor(Math.random() * 2) + 2)]}px`))
-    .css('left', (`${((Math.floor(Math.random() * 6) +12) * 16)}px`))
+    .css('left', (`${((Math.floor(Math.random() * 6) +10) * 16)}px`))
   $('#p1Cruiser').css('top', (`${cruiserTop[(Math.floor(Math.random() * 2) + 4)]}px`))
-    .css('left', (`${((Math.floor(Math.random() * 6) +13) * 16)}px`))
+    .css('left', (`${((Math.floor(Math.random() * 6) +11) * 16)}px`))
   $('#p1Submarine').css('top', (`${submarineTop[(Math.floor(Math.random() * 2) + 6)]}px`))
-    .css('left', (`${((Math.floor(Math.random() * 6) +13) * 16)}px`))
+    .css('left', (`${((Math.floor(Math.random() * 6) +11) * 16)}px`))
   $('#p1Destroyer').css('top', (`${destroyerTop[(Math.floor(Math.random() * 2) + 8)]}px`))
-    .css('left', (`${((Math.floor(Math.random() * 6) +14) * 16)}px`))
+    .css('left', (`${((Math.floor(Math.random() * 6) +12) * 16)}px`))
 }
 
 //takes the ID of where the ship was dropped on board and adds/subtracts the the correct amout of spaces according to the length of the ship. This is for HORIZONTAL ONLY
@@ -115,9 +115,11 @@ const startGame = () => {
 //checks game win conditions
 const checkForWinner = () => {
   if(player1Data.destroyedShips.length === 5){
-    alert('Player 1 has lost!')
+    player2Data.gamesWon += 1
+    alert('YOU WIN!')
   } else if (player2Data.destroyedShips.length === 5){ 
-    alert('Player 2 has lost!')
+    player2Data.gamesLost -= 1
+    alert('Sorry...You lost')
   }
 
 }
@@ -152,6 +154,7 @@ const userFires = (e) => {
   if(divsAlreadyClicked.includes(location)){
     alert(`You've already chosen this space. Work on your aim guy!`)
   }else if(miss === true) {
+    player2Data.shotsMissed += 1
     divsAlreadyClicked.push(location)
     console.log('that was a miss!')
     $(e.target).css('background-color', 'white')
@@ -159,6 +162,7 @@ const userFires = (e) => {
     .css('border-radius', '10px') 
     setTimeout(computerFiresBack, 500) 
   } else if (hit === true) {
+    player2Data.shotsHit += 1
     divsAlreadyClicked.push(location)
     console.log(e.target.id)
     console.log(ship)
@@ -191,7 +195,8 @@ const numbersChosen = []
 const computerFiresBack = () => {
   console.log('COMPUTER FIRES BACK!')
   const id = Math.floor(Math.random() * 100) + 1 //picks a random number from 1-100 to compare to squares
-  const $square = $(document.body.children[0].children[3].children[2].children[`${id}` - 1]) //accesses the player2 gameboard to change color for missed shots
+  const $square = $(document.body.children[0].children[3].children[3].children[`${id}` - 1]) //accesses the player2 gameboard to change color for missed shots
+  console.log($square)
   if(numbersChosen.includes(id) === true ) { //if the number selected by mathrandom has already been chosen. 
     computerFiresBack() //repeat function
   } else if (player2Data.shipLocation.p2Carrier.includes(`${id}`)){ //if the number selected by mathrandom is in the player Object ship location
@@ -285,20 +290,15 @@ $(()=> {
 
 //VISUAL AND INTERACTION
 //media query for smaller screens!
-//fix drag and drop for mobile
-//fix overlapping ships on boards
 //give ships the ability to rotate
 //make overall game look better
 //make modal with directions
 //make modal with YOU WON or YOU LOST!
 //when someone wins, create reset button to start over without reloading.
 //fix bottom container spacing
-//make ships reappear in ships lost section
+//make ships appear in ships lost section
 
 //LOGIC
 
-//Temp fix player 1 ship placement to 5 different positions.
-
 //BUGS/THINGS TO FIX
-//stop player 1 ships from overlapping on startup
-//stop player 2 ships from being able to be placed outside of board
+//stop user ships from being able to be placed outside of board

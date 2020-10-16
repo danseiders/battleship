@@ -9,7 +9,6 @@
 
   <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
   crossorigin="anonymous"></script>
-  
   <script src="js/jquery-ui.js"></script>
   <script src="js/app.js"></script>
   <!------- TOUCH PUNCH by Dave Furfero- PLEASE SEE README.txt FOR CREDITS ------>
@@ -25,7 +24,8 @@
     </div>
     <div class="titles">
       <h3 class='red'>SHIPS</h3>
-      <h3 class='stats'>STATISTICS</h3>
+      <h3 class='statsTitle'>STATISTICS
+      </h3>
       <h3 class='blue'>SHIPS</h3>
     </div>
     <div class="gameplay_container">
@@ -59,6 +59,13 @@
             </div>
           </div>
           <div class="board" id="player1_board"></div>
+          <div class="statsDiv">
+            <h6 class="stats" id="gamesWon">Games Won</h6>
+            <h6 class="stats" id="gamesLost">Games Lost</h6>
+            <h6 class="stats" id="shotsFired">Shots Fired</h6>
+            <h6 class="stats" id="hits">Hits</h6>
+            <h6 class="stats" id="misses">Misses</h6>
+          </div>
           <div class="board" id="player2_board"></div>
           <div class="player2_ships">
             <div class="p2ship carrier" id="p2Carrier">
@@ -97,7 +104,7 @@
           </div>
           <div class="destroyed_ships" id="player2_destroyed">SHIPS LOST</div>
         </div>
-
+      </div>
     </div>
 </body>
 </html>
