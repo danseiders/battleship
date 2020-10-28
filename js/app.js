@@ -181,7 +181,6 @@ const userFires = (e) => {
     player2Data.shotsMissed += 1
     $('#shotsMissed').html(`MISSES<br>${player2Data.shotsMissed}`)
     divsAlreadyClicked.push(location)
-    // console.log('that was a miss!')
     $(e.target).css('background-color', 'white')
     .css('opacity', '.7')
     .css('border-radius', '10px') 
@@ -190,8 +189,6 @@ const userFires = (e) => {
     player2Data.shotsHit += 1
     $('#shotsHit').html(`HITS<br>${player2Data.shotsHit}`)
     divsAlreadyClicked.push(location)
-    // console.log(e.target.id)
-    // console.log(ship)
     if(ship === 'p1Carrier'){
       player1Data.p1Carrier -=1
       checkPlayer1Score(player1Data.p1Carrier, e.target.id)
@@ -208,8 +205,6 @@ const userFires = (e) => {
       player1Data.p1Destroyer -=1
       checkPlayer1Score(player1Data.p1Destroyer, e.target.id)
     }
-    // console.log(`HIT!`)
-    // console.log(shipDiv)
     $(e.target).css('background-color', 'red').css('border-radius', '10px').css('opacity', '.8')
     setTimeout(computerFiresBack, 500) 
   }
@@ -296,7 +291,7 @@ $(()=> {
     //lets the user drop their ships on only their board, while adding the class of ship where its dropped to the square.
     $( ".player2_board_squares" ).droppable({
       accept: ".p2ship",
-      drop: function(e, ui) {
+      drop: function(e) {
        const location = e.target.id //gets the div the ship is dropped on
        const ship = document.getElementById(`${e.originalEvent.target.id}`).parentElement.id //finds the id of the ship dropped
         $(this).addClass(`${e.originalEvent.target.id}`).find( ".player2_board_squares" )        
