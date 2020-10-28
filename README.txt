@@ -2,9 +2,6 @@ BATTLESHIP!
 Adapted from Milton Bradley's classic board game BATTLESHIP. 
 Programming and design by: Dan Seiders 
 
-
-the approach taken, a link to your live site, unsolved problems, etc.
-
 Battleship was built using HTML, CSS, JavaScript, JQuery, JQuery UI and a hack called JQuery UI Touch Punch. 
 
 I started this game by working on a general html layout and using loops to make boards with correct classes and IDs. After that it was onto logic and integrating JQuery UI draggable/droppable for the ships. Some of this proved difficult, since the user drops ships but the computer needed ships to be placed for it - so I ended up moving the user ships using location  by pixel. After hitting "start game" making the computer ships opacity changes to 0, so the user would click on the ship rather than the board (if it was a hit!) Again- this made things challenging because the user was clicking while the computer was auto-firing back by board ID location. 
