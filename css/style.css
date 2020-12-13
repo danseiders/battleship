@@ -2,19 +2,27 @@
 
 /* ____________ MAIN PAGE DIVS ____________ */
 
+body{
+    height: 100vh;
+    width: 100vw;
+    background-color: rgb(18, 30, 56);
+}
 .complete_game{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     color: white;
     font-family: 'Notable', sans-serif;
-    min-height: 1000px;
-    min-width: 725px;
-    max-height: 1000px;
-    background-color: rgb(18, 30, 56);
+    width: 100vw;
+    height: 100vh;
+    /* background-color: rgb(18, 30, 56); */
 }
 
 header {
     text-align: center;
     font-size: 5vw;
     padding: 15px;
+    margin: 0 0 50px 0;
     color: rgb(252, 255, 217);
 }
 
@@ -42,14 +50,12 @@ h3 {
     display: flex;
     flex-flow: row;
     justify-content: center;
-    align-items: baseline;  
+    align-items: baseline; 
+    height: auto;
+    width: 100vw;
+    min-width: 750px;
 }
 
-.bottom_titles {
-    height: 100px;
-    display: flex;
-    justify-content: space-evenly;
-}
 
 /*________________ GAMEBOARD STYLE_______________ */
 .board {
@@ -185,6 +191,13 @@ h3 {
 }
 
 @media (max-width: 900px) {
+    .complete_game {
+        min-width: 900px;
+        height: 100vh;
+        width: 100vw;
+        /* min-height: auto; */
+        /* height: auto; */
+    }
     
     .board {
         display: flex;

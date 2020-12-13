@@ -1,5 +1,4 @@
 BATTLESHIP!
-Adapted from Milton Bradley's classic board game BATTLESHIP. 
 Programming and design by: Dan Seiders 
 
 https://danseiders.github.io/battleship/
@@ -18,8 +17,7 @@ Fix the overlapping issue with ship placement / being able to place ships outsid
 Known Issues: 
 When the user places their ships, sometimes the droppable information doesn't react properly and an alert shows to place ship again. 
 Sometimes, the user is able to click on the div behind the computer ship, registering a miss and letting the computer get an extra shot....
-
-
+Computer ships can occasionally be placed off the board depending on browser.
 
 Gameboard background photos: https://unsplash.com/@dynamicwang
 
