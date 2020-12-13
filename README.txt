@@ -2,8 +2,7 @@ BATTLESHIP!
 Adapted from Milton Bradley's classic board game BATTLESHIP. 
 Programming and design by: Dan Seiders 
 
-
-the approach taken, a link to your live site, unsolved problems, etc.
+https://danseiders.github.io/battleship/
 
 Battleship was built using HTML, CSS, JavaScript, JQuery, JQuery UI and a hack called JQuery UI Touch Punch. 
 
